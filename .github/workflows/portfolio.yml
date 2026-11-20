@@ -1,4 +1,4 @@
-name: Validar portafolio
+name: Validar y publicar portafolio
 
 on:
   push:
@@ -17,3 +17,32 @@ jobs:
           persist-credentials: false
       - name: Revisar enlaces y controles de idioma
         run: python3 scripts/check_site.py
+
+      - name: Preparar la página estática
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        run: |
+          mkdir -p _site
+          cp index.html _site/index.html
+      - name: Empaquetar para GitHub Pages
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: validate
+    runs-on: ubuntu-latest
+    concurrency:
+      group: github-pages
+      cancel-in-progress: false
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publicar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
