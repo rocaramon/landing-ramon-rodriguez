@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Ramón Rodríguez Carreón, arquitecto de software y líder técnico en Monterrey. Java, AWS, banca y plataformas de pagos.">
+<title>Ramón Rodríguez Carreón | Portafolio profesional</title>
+<style>
+:root {
+  color-scheme: dark;
+  --background: #0b1424;
+  --panel: #142238;
+  --text: #f0f6ff;
+  --muted: #bccce1;
+  --accent: #77d9f5;
+  --border: #344a65;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--background); color: var(--text); font: 1rem/1.65 system-ui, sans-serif; }
+a { color: inherit; }
+a:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
+.wrap { width: min(69rem, calc(100% - 3rem)); margin-inline: auto; }
+.header, .footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.25rem; }
+.header { border-bottom: 1px solid var(--border); }
+.brand { font-weight: 750; text-decoration: none; }
+nav { display: flex; flex-wrap: wrap; gap: .5rem 1.4rem; }
+nav a { color: var(--muted); text-decoration: none; }
+nav a:hover { color: var(--accent); }
+.hero { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); gap: 2.5rem; align-items: center; padding-block: clamp(3.5rem, 9vw, 7rem); }
+.label { color: var(--accent); font-size: .875rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; }
+h1, h2, h3, p { margin: 0; overflow-wrap: anywhere; }
+h1 { margin-block: .65rem 1rem; font-size: clamp(2.7rem, 8vw, 6.6rem); line-height: .98; letter-spacing: -.065em; }
+h2 { font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.1; letter-spacing: -.04em; }
+h3 { font-size: 1.2rem; }
+p, li { color: var(--muted); }
+.role { color: var(--text); font-size: 1.2rem; margin-bottom: .4rem; }
+.button { display: inline-block; margin-top: 1.4rem; padding: .65rem 1rem; border-radius: .5rem; background: var(--accent); color: #092238; font-weight: 750; text-decoration: none; }
+.button:hover { background: #a9ebff; }
+.hero { padding-block: clamp(2.5rem, 6vw, 4.5rem); }
+h1 { font-size: clamp(2.7rem, 6vw, 5.1rem); }
+.actions { display: flex; align-items: baseline; flex-wrap: wrap; gap: .75rem 1.25rem; }
+.linkedin {
+  display: inline-flex; align-items: center; gap: .6rem;
+  background: #075caf; color: #fff;
+}
+.linkedin:hover { background: #084a8b; }
+.linkedin-mark {
+  display: inline-grid; place-items: center; width: 1.35rem; height: 1.35rem;
+  border-radius: .2rem; background: #fff; color: #075caf; font: 800 1rem/1 system-ui, sans-serif;
+}
+.featured-cert {
+  display: grid; justify-items: center; text-align: center; gap: .45rem;
+  padding: clamp(1.4rem, 4vw, 2.5rem); border: 1px solid #456b92; border-radius: 1.25rem;
+  background: radial-gradient(ellipse at 50% 0%, #1d4165, transparent 75%), var(--panel);
+}
+.featured-cert img { width: 9rem; height: 9rem; object-fit: contain; }
+.featured-cert h2 { font-size: clamp(1.45rem, 3vw, 2.05rem); }
+.credentials { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 1rem; }
+.credential { display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: .8rem; align-items: start; }
+.credential img, .credential-mark { width: 3rem; height: 3rem; object-fit: contain; }
+.credential-mark {
+  display: grid; place-items: center; border: 1px solid #547391; border-radius: .5rem;
+  color: var(--accent); background: #192f48; font-size: .875rem; font-weight: 750;
+}
+.section { padding-block: clamp(2.5rem, 5vw, 4rem); border-top: 1px solid var(--border); }
+.section h2 { margin-bottom: 1.35rem; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.card { padding: clamp(1.15rem, 3vw, 1.8rem); border: 1px solid var(--border); border-radius: .9rem; background: var(--panel); }
+.timeline { display: grid; gap: 1rem; }
+.card h3 { margin-bottom: .4rem; }
+.card ul { margin-bottom: 0; padding-left: 1.25rem; }
+.contact { background: var(--accent); color: #092238; border-radius: 1.15rem; padding: clamp(1.5rem, 6vw, 4rem); }
+.contact p { color: #183e57; }
+.contact h2 { margin-bottom: .75rem; }
+.contact a:focus-visible { outline-color: #102e46; }
+.footer { color: var(--muted); }
+@media (max-width: 42rem) {
+  .hero, .grid { grid-template-columns: 1fr; }
+  .hero { gap: 1.5rem; }
+  .wrap { width: calc(100% - 2rem); }
+}
+
+.language-switch {
+  display: flex; gap: .2rem; padding: .25rem; border: 1px solid var(--border);
+  border-radius: .65rem; background: var(--panel);
+}
+.language-switch[hidden] { display: none; }
+.language-switch button {
+  border: 0; border-radius: .4rem; padding: .45rem .65rem; background: transparent;
+  color: var(--muted); font: inherit; font-size: .875rem; cursor: pointer;
+}
+.language-switch button[aria-pressed="true"] { background: var(--accent); color: var(--background); font-weight: 700; }
+.language-switch button:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+</style>
+</head>
+<body>
+<header class="wrap header" id="inicio">
+  <a class="brand" href="#inicio">Ramón Rodríguez Carreón</a>
+  <nav aria-label="Navegación principal">
+    <a href="#certificaciones"><span data-en="Certifications">Certificaciones</span></a>
+    <a href="#experiencia"><span data-en="Experience">Experiencia</span></a>
+    <a href="#proyectos"><span data-en="Projects">Proyectos</span></a>
+    <a href="#formacion"><span data-en="Education">Formación</span></a>
+    <a href="https://www.linkedin.com/in/ramon-roca/">LinkedIn</a>
+  </nav>
+  <div class="language-switch" role="group" aria-label="Idioma del sitio" hidden>
+    <button type="button" lang="es" data-language="es" aria-pressed="true">Español</button>
+    <button type="button" lang="en" data-language="en" aria-pressed="false">English</button>
+  </div>
+</header>
+<main class="wrap">
+  <section class="hero" aria-labelledby="nombre">
+    <div>
+      <p class="label"><span data-en="Professional Portfolio">Portafolio profesional</span></p>
+      <h1 id="nombre">Ramón<br>Rodríguez Carreón</h1>
+      <p class="role"><span data-en="Software Architect and Technical Lead">Arquitecto de software y líder técnico</span></p>
+      <p><span data-en="I design, build, and operate banking and payments platforms with Java, Spring Boot, and AWS. I have over 15 years of IT experience, including over 12 years in software engineering and over 10 years building mission-critical solutions for financial services.">Diseño, desarrollo y opero plataformas de banca y pagos con Java, Spring Boot y AWS. Tengo más de 15 años de experiencia en TI, más de 12 en ingeniería de software y más de 10 en soluciones críticas para servicios financieros.</span></p>
+      <p style="margin-top: .65rem"><span data-en="Monterrey, Nuevo León, Mexico">Monterrey, Nuevo León, México</span></p>
+      <div class="actions">
+        <a class="button linkedin" href="https://www.linkedin.com/in/ramon-roca/"><span class="linkedin-mark" aria-hidden="true">in</span><span data-en="View my LinkedIn profile">Ver mi perfil en LinkedIn</span></a>
+        <a href="#experiencia"><span data-en="View experience">Ver experiencia</span></a>
+      </div>
+    </div>
+    <aside class="featured-cert" aria-labelledby="aws-destacada">
+      <p class="label"><span data-en="Featured Certification">Certificación destacada</span></p>
+      <img src="https://images.credly.com/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png" alt="" width="144" height="144">
+      <h2 id="aws-destacada">AWS Certified Solutions Architect – Associate</h2>
+      <p><span data-en="Amazon Web Services · Nov. 2026 – Nov. 2029">Amazon Web Services · Nov. 2026 – nov. 2029</span></p>
+    </aside>
+  </section>
+  <section class="section" id="certificaciones" aria-labelledby="titulo-certificaciones">
+    <h2 id="titulo-certificaciones"><span data-en="Additional Certifications">Más certificaciones</span></h2>
+    <div class="credentials">
+      <article class="card credential">
+        <img src="https://images.credly.com/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png" alt="" width="48" height="48">
+        <div>
+          <h3>AWS Cloud Practitioner</h3>
+          <p>Amazon Web Services · Mar. 2020</p>
+        </div>
+      </article>
+      <article class="card credential">
+        <img src="https://images.credly.com/size/200x200/images/1598437d-f59f-4f0f-a138-7e00c69acbce/blob" alt="" width="48" height="48">
+        <div>
+          <h3>Scrum Fundamentals Certified</h3>
+          <p><span data-en="Certiprof · Jan. 2021">Certiprof · Ene. 2021</span></p>
+        </div>
+      </article>
+      <article class="card credential">
+        <span class="credential-mark" aria-hidden="true">ITIL</span>
+        <div>
+          <h3>ITIL v3 Intermediate RC &amp; V</h3>
+          <p>Loyalist · Jul. 2010</p>
+        </div>
+      </article>
+      <article class="card credential">
+        <span class="credential-mark" aria-hidden="true">ITIL</span>
+        <div>
+          <h3>ITIL v3 Fundamentals</h3>
+          <p>Loyalist · May. 2010</p>
+        </div>
+      </article>
+    </div>
+  </section>
+  <section class="section" id="experiencia" aria-labelledby="titulo-experiencia">
+    <h2 id="titulo-experiencia"><span data-en="Professional Experience">Experiencia profesional</span></h2>
+    <div class="timeline">
+      <article class="card">
+        <h3><span data-en="Software Architect and Technical Lead · Nyxus México">Arquitecto de software y líder técnico · Nyxus México</span></h3>
+        <p><span data-en="October 2021 – Present">Octubre de 2021 – Actualidad</span></p>
+        <ul>
+          <li><span data-en="I own the technical delivery of a banking and payments platform, from architecture and Java backend development to AWS deployments and operations.">Responsable técnico de una plataforma bancaria y de pagos, desde la arquitectura y el backend en Java hasta los despliegues y la operación en AWS.</span></li>
+          <li><span data-en="I led card issuing and transaction processing integrations with Paymentology and Copayment for Mastercard and Carnet. I coordinated provider onboarding, certification, and production launches.">Lideré integraciones de emisión y procesamiento de tarjetas con Paymentology y Copayment para Mastercard y Carnet. Coordiné la incorporación de proveedores, las certificaciones y las salidas a producción.</span></li>
+          <li><span data-en="I designed inbound and outbound SPEI flows with ASP and OPM, including idempotency, reconciliation, and error recovery.">Diseñé flujos de entrada y salida para SPEI con ASP y OPM, incluyendo idempotencia, conciliación y recuperación ante errores.</span></li>
+          <li><span data-en="I developed Spring Boot services and internal portals for transaction operations and reconciliation. I worked with financial providers to resolve production incidents.">Desarrollé servicios con Spring Boot y portales internos para la operación y conciliación de transacciones. Atendí incidentes en producción junto con proveedores financieros.</span></li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3><span data-en="Senior Software Engineer · Nyxus México">Ingeniero de software sénior · Nyxus México</span></h3>
+        <p><span data-en="March 2019 – January 2021">Marzo de 2019 – Enero de 2021</span></p>
+        <ul>
+          <li><span data-en="I built the initial backend architecture for a financial institution and implemented core banking services in Java and Spring Boot.">Construí la arquitectura inicial del backend de una institución financiera e implementé servicios de banca central con Java y Spring Boot.</span></li>
+          <li><span data-en="I designed database schemas and transaction models. I launched AWS production environments.">Diseñé esquemas de bases de datos y modelos transaccionales. Puse en marcha entornos de producción en AWS.</span></li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3><span data-en="Technical Leadership and Software Development · FERELLI">Liderazgo técnico y desarrollo de software · FERELLI</span></h3>
+        <p><span data-en="June 2016 – February 2019">Junio de 2016 – Febrero de 2019</span></p>
+        <ul>
+          <li><strong><span data-en="Team Lead, Sep. 2018 – Feb. 2019.">Líder de equipo, sep. 2018 – feb. 2019.</span></strong> <span data-en="I developed a Magento store on AWS EC2 with a Banorte payment integration.">Desarrollé una tienda Magento en AWS EC2 con una integración de pagos de Banorte.</span></li>
+          <li><strong><span data-en="Backend Lead and Developer, Mar. – Sep. 2018.">Líder de backend y desarrollador, mar. – sep. 2018.</span></strong> <span data-en="I built an Android app for Zebra TC51 handhelds that used SOAP services. I coordinated the team&#x27;s Git workflow.">Desarrollé una aplicación Android para terminales Zebra TC51 que consumía servicios SOAP. Coordiné el flujo de trabajo del equipo en Git.</span></li>
+          <li><strong><span data-en="Developer and Team Lead, Feb. 2017 – Mar. 2018.">Desarrollador y líder de equipo, feb. 2017 – mar. 2018.</span></strong> <span data-en="I designed and implemented the version 3.3 electronic invoicing backend for three AXERA brands using Java EE, JBoss, and SOAP.">Diseñé e implementé el backend de facturación 3.3 para tres marcas de AXERA con Java EE, JBoss y SOAP.</span></li>
+          <li><strong><span data-en="Developer and Team Lead, June 2016 – Feb. 2017.">Desarrollador y líder de equipo, jun. 2016 – feb. 2017.</span></strong> <span data-en="I implemented services for GNC&#x27;s online store using Apache Camel and JBoss Fuse, including the Magento-to-Aptos integration and version 3.2 electronic invoicing.">Implementé servicios para la tienda de GNC con Apache Camel y JBoss Fuse, incluida la integración entre Magento y Aptos y la facturación 3.2.</span></li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3><span data-en="Mobile Web Developer · CITI Value in Real Time">Desarrollador web móvil · CITI Value in Real Time</span></h3>
+        <p><span data-en="March 2014 – July 2015">Marzo de 2014 – Julio de 2015</span></p>
+        <p><span data-en="I developed and maintained mobile web application modules using Java, JSP, MySQL, and Volantis MCS. I implemented SOAP services and tested interfaces across several generations of devices.">Desarrollé y mantuve módulos de una aplicación web móvil con Java, JSP, MySQL y Volantis MCS. Implementé servicios SOAP y probé interfaces en dispositivos de distintas generaciones.</span></p>
+      </article>
+      <article class="card">
+        <h3><span data-en="Earlier Experience">Experiencia anterior</span></h3>
+        <ul>
+          <li><strong><span data-en="Global Hitss · Programmer Analyst">Global Hitss · Analista programador</span></strong> <span data-en="(Dec. 2013 – Mar. 2014). Developed administrative and sales platforms for Senda&#x27;s SinCo project using Java EE, Hibernate, ZK, and Swing.">(dic. 2013 – mar. 2014). Desarrollo de plataformas administrativas y de ventas para el proyecto SinCo de Senda con Java EE, Hibernate, ZK y Swing.</span></li>
+          <li><strong><span data-en="ITESM Monterrey Campus · Java Web Architecture Developer">ITESM Campus Monterrey · Desarrollador de arquitectura web Java</span></strong> <span data-en="(June – Dec. 2013). Migrated Java components to an MVC architecture using Struts 2.">(jun. – dic. 2013). Migración de componentes Java a una arquitectura MVC con Struts 2.</span></li>
+          <li><strong><span data-en="BSDEnterprise · Software Analyst">BSDEnterprise · Analista de software</span></strong> <span data-en="(Oct. 2012 – June 2013). Developed interfaces and reports for a financial services client using Java Swing, Crystal Reports, and Sybase.">(oct. 2012 – jun. 2013). Desarrollo de interfaces y reportes para un cliente financiero con Java Swing, Crystal Reports y Sybase.</span></li>
+          <li><strong><span data-en="Softtek · Developer and Administrative Assistant">Softtek · Desarrollador y asistente administrativo</span></strong> <span data-en="(Feb. – Nov. 2012). Supported OXXO applications and developed modules using Java, JSP, and DB2.">(feb. – nov. 2012). Soporte y desarrollo de módulos para aplicaciones de OXXO con Java, JSP y DB2.</span></li>
+          <li><strong><span data-en="CoSePro · Systems Administrator">CoSePro · Administrador de sistemas</span></strong> <span data-en="(2009 – 2010). Web development and network administration.">(2009 – 2010). Desarrollo web y administración de redes.</span></li>
+        </ul>
+      </article>
+    </div>
+  </section>
+  <section class="section" id="proyectos" aria-labelledby="titulo-proyectos">
+    <h2 id="titulo-proyectos"><span data-en="Selected Projects">Proyectos destacados</span></h2>
+    <div class="grid">
+      <article class="card">
+        <h3><span data-en="Paymentology Integration for Mastercard">Integración de Paymentology para Mastercard</span></h3>
+        <p><span data-en="I led the design and implementation of the transaction flow, from the backend logic to the configuration of Amazon RDS, Amazon SQS, and security policies. I coordinated connectivity with the provider.">Lideré el diseño y la implementación del flujo de transacciones, desde la lógica de backend hasta la configuración de Amazon RDS, Amazon SQS y las políticas de seguridad. Coordiné la conectividad con el proveedor.</span></p>
+      </article>
+      <article class="card">
+        <h3><span data-en="SPEI Provider Integration">Integración con un proveedor de SPEI</span></h3>
+        <p><span data-en="I designed the end-to-end integration, including the data model, code architecture, network, and AWS infrastructure. I worked with business, network, and engineering teams.">Diseñé la integración de extremo a extremo, incluidos el modelo de datos, la arquitectura del código, la red y la infraestructura en AWS. Colaboré con equipos comerciales, de redes y de ingeniería.</span></p>
+      </article>
+      <article class="card">
+        <h3><span data-en="CI/CD practice project">Proyecto práctico de CI/CD</span></h3>
+        <p><span data-en="I use this portfolio to practice continuous integration. A Python check validates internal links and language controls. The next step is automating deployment to EC2.">Uso este portafolio para practicar integración continua. Una comprobación en Python valida los enlaces internos y los controles de idioma. El siguiente paso es automatizar el despliegue a EC2.</span></p>
+      </article>
+    </div>
+  </section>
+  <section class="section" aria-labelledby="titulo-habilidades">
+    <h2 id="titulo-habilidades"><span data-en="Skills">Habilidades</span></h2>
+    <div class="grid">
+      <article class="card">
+        <h3><span data-en="Architecture and Backend Development">Arquitectura y backend</span></h3>
+        <p><span data-en="Java, Spring Boot, microservices, distributed systems, high availability, REST APIs, SOAP, XML, and MySQL database design.">Java, Spring Boot, microservicios, sistemas distribuidos, alta disponibilidad, APIs REST, SOAP, XML y diseño de bases de datos MySQL.</span></p>
+      </article>
+      <article class="card">
+        <h3><span data-en="Cloud, Banking, and Operations">Nube, banca y operación</span></h3>
+        <p><span data-en="AWS, Elastic Beanstalk, EC2, RDS, SQS, SPEI, ISO 8583, reconciliation, technical leadership, and 24/7 banking operations.">AWS, Elastic Beanstalk, EC2, RDS, SQS, SPEI, ISO 8583, conciliación, liderazgo técnico y operación bancaria 24/7.</span></p>
+      </article>
+    </div>
+  </section>
+  <section class="section" id="formacion" aria-labelledby="titulo-formacion">
+    <h2 id="titulo-formacion"><span data-en="Education">Formación</span></h2>
+    <article class="card">
+      <h3><span data-en="Master&#x27;s in Business Administration and Finance">Maestría en Administración de Empresas y Finanzas</span></h3>
+      <p>Universidad Regiomontana · 2010–2012</p>
+    </article>
+  </section>
+  <section class="contact" id="contacto" aria-labelledby="titulo-contacto">
+    <h2 id="titulo-contacto"><span data-en="Let&#x27;s Connect">Hablemos</span></h2>
+    <p><span data-en="If you&#x27;re hiring a software architect or technical lead, you can reach me on LinkedIn.">Si buscas un arquitecto de software o líder técnico para tu equipo, puedes escribirme por LinkedIn.</span></p>
+    <a class="button linkedin" href="https://www.linkedin.com/in/ramon-roca/"><span class="linkedin-mark" aria-hidden="true">in</span><span data-en="View my LinkedIn profile">Ver mi perfil en LinkedIn</span></a>
+  </section>
+</main>
+<footer class="wrap footer">
+  <span>Ramón Rodríguez Carreón</span>
+  <a href="#inicio"><span data-en="Back to Top">Volver al inicio</span></a>
+</footer>
+<script>
+  const languageSwitch = document.querySelector('.language-switch');
+  const languageButtons = [...languageSwitch.querySelectorAll('button')];
+  const navigation = document.querySelector('nav');
+  const description = document.querySelector('meta[name="description"]');
+  const spanishDescription = description.content;
+  const spanishTitle = document.title;
+  const translations = [...document.querySelectorAll('[data-en]')].map(element => ({
+    element,
+    es: element.textContent,
+    en: element.dataset.en
+  }));
+  const languageKey = 'ramon-portfolio-language';
+
+  function setLanguage(language) {
+    const english = language === 'en';
+    document.documentElement.lang = language;
+    document.title = english ? 'Ramón Rodríguez Carreón | Professional Portfolio' : spanishTitle;
+    description.content = english
+      ? 'Ramón Rodríguez Carreón, software architect and technical lead in Monterrey. Java, AWS, banking, and payments platforms.'
+      : spanishDescription;
+    navigation.setAttribute('aria-label', english ? 'Main navigation' : 'Navegación principal');
+    languageSwitch.setAttribute('aria-label', english ? 'Site language' : 'Idioma del sitio');
+    for (const translation of translations) {
+      translation.element.textContent = translation[language];
+    }
+    for (const button of languageButtons) {
+      button.setAttribute('aria-pressed', String(button.dataset.language === language));
+    }
+  }
+
+  let savedLanguage;
+  try {
+    savedLanguage = localStorage.getItem(languageKey);
+  } catch {
+    // The selector still works when browser storage is unavailable.
+  }
+
+  setLanguage(savedLanguage === 'en' ? 'en' : 'es');
+  for (const button of languageButtons) {
+    button.addEventListener('click', () => {
+      const language = button.dataset.language;
+      setLanguage(language);
+      try {
+        localStorage.setItem(languageKey, language);
+      } catch {
+        // Keep the current selection for this page visit.
+      }
+    });
+  }
+  languageSwitch.hidden = false;
+</script>
+</body>
+</html>
